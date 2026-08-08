@@ -22,7 +22,7 @@ const Contact = () => {
                   fullWidth 
                   label="First Name" 
                   variant="outlined" 
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(255,255,255,0.2)' } } }}
+                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -30,7 +30,7 @@ const Contact = () => {
                   fullWidth 
                   label="Last Name" 
                   variant="outlined" 
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(255,255,255,0.2)' } } }}
+                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -39,7 +39,7 @@ const Contact = () => {
                   label="Email Address" 
                   variant="outlined" 
                   type="email"
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(255,255,255,0.2)' } } }}
+                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -49,7 +49,7 @@ const Contact = () => {
                   variant="outlined" 
                   multiline
                   rows={6}
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(255,255,255,0.2)' } } }}
+                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
                 />
               </Grid>
               <Grid item xs={12} sx={{ textAlign: 'center', mt: 2 }}>

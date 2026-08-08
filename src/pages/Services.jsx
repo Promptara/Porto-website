@@ -14,7 +14,7 @@ const Services = () => {
         </Typography>
         
         {/* Placeholder for detailed services - in a real app this would map over data like the home page but with more depth */}
-        <Box sx={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: 4, border: '1px dashed rgba(255,255,255,0.1)' }}>
+        <Box sx={{ height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.02)', borderRadius: 4, border: '1px dashed rgba(0,0,0,0.1)' }}>
           <Typography variant="h6" color="text.secondary">Detailed Services List Coming Soon</Typography>
         </Box>
       </motion.div>

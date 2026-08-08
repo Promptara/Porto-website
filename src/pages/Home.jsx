@@ -19,9 +19,9 @@ import { Link } from 'react-router-dom';
 
 const services = [
   { title: 'Website Development', icon: <WebIcon fontSize="large" color="primary" />, desc: 'Custom, high-performance websites tailored to your business needs.' },
-  { title: 'WordPress Development', icon: <CodeIcon fontSize="large" color="secondary" />, desc: 'Scalable and manageable WordPress solutions and themes.' },
+  { title: 'WordPress Development', icon: <CodeIcon fontSize="large" color="primary" />, desc: 'Scalable and manageable WordPress solutions and themes.' },
   { title: 'Graphic Design', icon: <DesignServicesIcon fontSize="large" color="primary" />, desc: 'Stunning visual assets that communicate your brand effectively.' },
-  { title: 'Logo Design', icon: <DrawIcon fontSize="large" color="secondary" />, desc: 'Memorable and unique logos that define your brand identity.' },
+  { title: 'Logo Design', icon: <DrawIcon fontSize="large" color="primary" />, desc: 'Memorable and unique logos that define your brand identity.' },
   { title: 'Digital Products', icon: <ShoppingBagIcon fontSize="large" color="primary" />, desc: 'Premium digital goods, templates, and UI kits ready for use.' },
 ];
 
@@ -61,11 +61,11 @@ const Home = () => {
                 </Typography>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                  <Button variant="contained" size="large" component={Link} to="/portfolio" endIcon={<ArrowForwardIcon />}>
+                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap'}}>
+                  <Button sx={{color:"white"}} variant="contained" size="large" component={Link} to="/portfolio" endIcon={<ArrowForwardIcon />}>
                     View Our Work
                   </Button>
-                  <Button variant="outlined" size="large" component={Link} to="/contact" sx={{ borderColor: 'rgba(255,255,255,0.2)', color: '#fff', '&:hover': { borderColor: '#fff' }}}>
+                  <Button variant="outlined" size="large" component={Link} to="/contact" sx={{ borderColor: 'rgba(0, 255, 234, 0.65)', color: '#000000ff', '&:hover': { borderColor: '#00ffd5ff' }}}>
                     Let's Talk
                   </Button>
                 </Box>
@@ -76,19 +76,28 @@ const Home = () => {
       </Container>
 
       {/* Services Section */}
-      <Box sx={{ py: 10, background: 'rgba(255,255,255,0.02)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+      <Box sx={{ py: 10, background: 'rgba(0,0,0,0.02)', borderTop: '1px solid rgba(0,0,0,0.05)', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
         <Container maxWidth="lg">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={containerVariants}>
             <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
               Our <span className="text-gradient">Services</span>
             </Typography>
-            <Grid container spacing={4} justifyContent="center">
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
               {services.map((service, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+                <Box 
+                  key={index} 
+                  sx={{ 
+                    width: { 
+                      xs: '100%', 
+                      sm: 'calc(50% - 16px)', 
+                      md: 'calc(33.333% - 22px)' 
+                    } 
+                  }}
+                >
                   <motion.div variants={itemVariants} style={{ height: '100%' }}>
-                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', p: 2 }}>
-                      <CardContent>
-                        <Box sx={{ mb: 2, display: 'inline-block', p: 1.5, borderRadius: '12px', background: 'rgba(255,255,255,0.05)' }}>
+                    <Card sx={{ height: '100%', minHeight: 260, display: 'flex', flexDirection: 'column', p: 2 }}>
+                      <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                        <Box sx={{ mb: 2, width: 56, height: 56, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px', background: 'rgba(94, 190, 196, 0.15)' }}>
                           {service.icon}
                         </Box>
                         <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
@@ -100,9 +109,9 @@ const Home = () => {
                       </CardContent>
                     </Card>
                   </motion.div>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </motion.div>
         </Container>
       </Box>

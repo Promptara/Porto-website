@@ -2,10 +2,10 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     background: {
-      default: '#050505',
-      paper: '#121212',
+      default: '#fafafa',
+      paper: '#ffffff',
     },
     primary: {
       main: '#5ebec4',
@@ -18,8 +18,8 @@ const theme = createTheme({
       dark: '#f06292',
     },
     text: {
-      primary: '#ffffff',
-      secondary: '#a0a0a0',
+      primary: '#111111',
+      secondary: '#666666',
     },
   },
   typography: {
@@ -74,7 +74,7 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          background: 'rgba(20, 20, 20, 0.6)',
+          background: 'rgba(255, 255, 255, 1)',
           backdropFilter: 'blur(10px)',
           border: '1px solid rgba(255, 255, 255, 0.05)',
           boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',

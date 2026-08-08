@@ -54,8 +54,7 @@ const Layout = ({ children }) => {
               to={item.path} 
               fullWidth 
               sx={{ 
-                textAlign: 'center', 
-                color: location.pathname === item.path ? 'primary.main' : '#fff'
+                color: location.pathname === item.path ? 'primary.main' : 'text.primary'
               }}
             >
               <ListItemText primary={item.label} />
@@ -74,8 +73,8 @@ const Layout = ({ children }) => {
         sx={{ 
           transition: 'all 0.3s ease-in-out',
           py: scrolled ? 1 : 2,
-          background: scrolled ? 'rgba(10, 10, 10, 0.7)' : 'transparent',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none'
+          background: scrolled ? 'rgba(255, 255, 255, 0.7)' : 'transparent',
+          borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : 'none'
         }}
       >
         <Container maxWidth="lg">
@@ -95,8 +94,8 @@ const Layout = ({ children }) => {
                   component={Link} 
                   to={item.path}
                   sx={{ 
-                    color: location.pathname === item.path ? 'primary.main' : '#e0e0e0',
-                    fontWeight: 500,
+                    color: location.pathname === item.path ? 'primary.main' : 'text.primary',
+                    fontWeight: 600,
                     position: 'relative',
                     '&::after': {
                       content: '""',
@@ -143,7 +142,7 @@ const Layout = ({ children }) => {
           ModalProps={{ keepMounted: true }}
           sx={{
             display: { xs: 'block', md: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: '#121212' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, background: '#ffffff' },
           }}
         >
           {drawer}
@@ -154,7 +153,7 @@ const Layout = ({ children }) => {
         {children}
       </Box>
 
-      <Box component="footer" sx={{ py: 6, px: 2, mt: 'auto', borderTop: '1px solid rgba(255,255,255,0.05)', backgroundColor: 'rgba(5,5,5,0.8)' }}>
+      <Box component="footer" sx={{ py: 6, px: 2, mt: 'auto', borderTop: '1px solid rgba(0,0,0,0.05)', backgroundColor: 'rgba(250,250,250,0.8)' }}>
         <Container maxWidth="lg">
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>

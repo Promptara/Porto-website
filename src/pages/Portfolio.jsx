@@ -17,8 +17,8 @@ const Portfolio = () => {
           {[1, 2, 3, 4, 5, 6].map((item) => (
             <Grid item xs={12} sm={6} md={4} key={item}>
               <motion.div whileHover={{ y: -10 }} transition={{ type: 'spring', stiffness: 300 }}>
-                <Card sx={{ borderRadius: 4, overflow: 'hidden', background: 'rgba(255,255,255,0.03)' }}>
-                  <Box sx={{ height: 200, background: `linear-gradient(45deg, #1a1a1a, #2a2a2a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Card sx={{ borderRadius: 4, overflow: 'hidden', background: 'rgba(0,0,0,0.02)' }}>
+                  <Box sx={{ height: 200, background: `linear-gradient(45deg, #f0f0f0, #e0e0e0)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                      <Typography color="text.secondary">Project Image {item}</Typography>
                   </Box>
                   <CardContent>
