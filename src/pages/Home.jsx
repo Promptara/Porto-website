@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { 
   Typography, 
   Grid, 
@@ -58,7 +58,7 @@ const Home = () => {
       <Container maxWidth="xl" sx={{ pt: '15vw', pb: 10, px: { xs: 3, md: 8 } }}>
         <motion.div initial="hidden" animate="visible" variants={containerVariants}>
           <Grid container spacing={4} alignItems="flex-end">
-            <Grid item xs={12} md={7}>
+            <Grid item xs={12} md={8}>
               <motion.div variants={itemVariants}>
                 <Typography sx={{ color: '#a1a1a6', fontWeight: 700, textTransform: 'uppercase', mb: 2, fontSize: '0.9rem', letterSpacing: '0.05em' }}>
                   We are a design studio
@@ -83,7 +83,7 @@ const Home = () => {
             </Grid>
 
             {/* Mini Showreel Video */}
-            <Grid item xs={12} md={5}>
+            <Grid item xs={12} md={4} sx={{ minWidth: { md: '350px' } }}>
                <motion.div variants={itemVariants}>
                  <Box 
                    className="hover-target"

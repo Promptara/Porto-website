@@ -25,7 +25,7 @@ const theme = createTheme({
   typography: {
     fontFamily: '"Helvetica Neue", "Helvetica", "Inter", "Arial", sans-serif',
     h1: {
-      fontSize: 'clamp(3rem, 8.44vw, 12rem)',
+      fontSize: 'clamp(3rem, 6.5vw, 10rem)',
       fontWeight: 900,
       letterSpacing: '-0.03em',
       lineHeight: 0.9,

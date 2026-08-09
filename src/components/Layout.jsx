@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   AppBar, 
   Toolbar, 
@@ -15,7 +15,6 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { Link, useLocation } from 'react-router-dom';
-import promptaraLogo from '../assets/promptaralogo.png';
 
 const navItems = [
   { label: 'work', path: '/portfolio' },
@@ -81,7 +80,7 @@ const Layout = ({ children }) => {
         <Container maxWidth="xl" sx={{ px: { xs: 3, md: 8 } }}>
           <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: '#1D1D1F' }} component={Link} to="/">
-              <img src={promptaraLogo} alt="Promptara Logo" style={{ height: '32px', marginRight: '16px' }} />
+              <img src="/promptaralogo.png" alt="Promptara Logo" style={{ height: '32px', marginRight: '16px' }} />
               <Typography variant="h5" component="div" sx={{ fontWeight: 800, letterSpacing: '-0.02em', textTransform: 'lowercase' }}>
                 promptara
               </Typography>
