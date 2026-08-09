@@ -14,6 +14,7 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import DrawIcon from '@mui/icons-material/Draw';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import CodeIcon from '@mui/icons-material/Code';
+import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ const services = [
   { title: 'Website Development', icon: <WebIcon fontSize="large" color="primary" />, desc: 'Custom, high-performance websites tailored to your business needs.' },
   { title: 'WordPress Development', icon: <CodeIcon fontSize="large" color="primary" />, desc: 'Scalable and manageable WordPress solutions and themes.' },
   { title: 'Graphic Design', icon: <DesignServicesIcon fontSize="large" color="primary" />, desc: 'Stunning visual assets that communicate your brand effectively.' },
+  { title: 'UI/UX Design', icon: <ViewQuiltIcon fontSize="large" color="primary" />, desc: 'Intuitive and engaging user interfaces for web and mobile apps.' },
   { title: 'Logo Design', icon: <DrawIcon fontSize="large" color="primary" />, desc: 'Memorable and unique logos that define your brand identity.' },
   { title: 'Digital Products', icon: <ShoppingBagIcon fontSize="large" color="primary" />, desc: 'Premium digital goods, templates, and UI kits ready for use.' },
 ];

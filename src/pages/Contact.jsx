@@ -16,48 +16,42 @@ const Contact = () => {
         
         <Paper elevation={0} className="glass" sx={{ p: { xs: 4, md: 6 }, borderRadius: 4 }}>
           <form noValidate autoComplete="off">
-            <Grid container spacing={4}>
-              <Grid item xs={12} sm={6}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 4 }}>
                 <TextField 
                   fullWidth 
                   label="First Name" 
                   variant="outlined" 
                   sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
                 <TextField 
                   fullWidth 
                   label="Last Name" 
                   variant="outlined" 
                   sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField 
-                  fullWidth 
-                  label="Email Address" 
-                  variant="outlined" 
-                  type="email"
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField 
-                  fullWidth 
-                  label="Message" 
-                  variant="outlined" 
-                  multiline
-                  rows={6}
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
-                />
-              </Grid>
-              <Grid item xs={12} sx={{ textAlign: 'center', mt: 2 }}>
+              </Box>
+              <TextField 
+                fullWidth 
+                label="Email Address" 
+                variant="outlined" 
+                type="email"
+                sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
+              />
+              <TextField 
+                fullWidth 
+                label="Message" 
+                variant="outlined" 
+                multiline
+                rows={6}
+                sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
+              />
+              <Box sx={{ textAlign: 'center', mt: 2 }}>
                 <Button variant="contained" size="large" endIcon={<SendIcon />} sx={{ px: 6 }}>
                   Send Message
                 </Button>
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
           </form>
         </Paper>
       </motion.div>
