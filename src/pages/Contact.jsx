@@ -1,59 +1,126 @@
-import React from 'react';
+﻿import React from 'react';
 import { Typography, Container, Box, TextField, Button, Grid, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import SendIcon from '@mui/icons-material/Send';
 
+const services = ['Web Development', 'Mobile App', 'UI/UX Design', 'Branding', 'Digital Product'];
+const budgets = ['< $5k', '$5k - $10k', '$10k - $25k', '$25k+'];
+
 const Contact = () => {
+  const [selectedServices, setSelectedServices] = React.useState([]);
+  const [selectedBudget, setSelectedBudget] = React.useState('');
+
+  const toggleService = (service) => {
+    if (selectedServices.includes(service)) {
+      setSelectedServices(selectedServices.filter(s => s !== service));
+    } else {
+      setSelectedServices([...selectedServices, service]);
+    }
+  };
+
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{ pt: 10, pb: 20 }}>
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <Typography variant="h1" align="center" gutterBottom sx={{ mt: 4 }}>
-          Let's <span className="text-gradient-primary">Connect</span>
-        </Typography>
-        <Typography variant="h5" align="center" color="text.secondary" sx={{ mb: 8 }}>
-          Have a project in mind? We'd love to hear about it.
+        <Typography variant="h1" gutterBottom sx={{ color: '#1D1D1F', mb: 8, lineHeight: 1.1 }}>
+          got a project <br />
+          in mind? <br />
+          <span style={{ color: '#00E5FF' }}>let's talk!</span>
         </Typography>
         
-        <Paper elevation={0} className="glass" sx={{ p: { xs: 4, md: 6 }, borderRadius: 4 }}>
+        <Box sx={{ mt: 10 }}>
           <form noValidate autoComplete="off">
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              
+              {/* Services Selector */}
+              <Box>
+                <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>I'm interested in...</Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                  {services.map((service) => (
+                    <Box 
+                      key={service}
+                      className="hover-target"
+                      onClick={() => toggleService(service)}
+                      sx={{ 
+                        border: selectedServices.includes(service) ? '2px solid #00E5FF' : '1px solid #d2d2d7',
+                        borderRadius: '100px',
+                        px: 3, py: 1.5,
+                        cursor: 'pointer',
+                        color: selectedServices.includes(service) ? '#00E5FF' : '#1D1D1F',
+                        fontWeight: 600,
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          borderColor: '#00E5FF'
+                        }
+                      }}
+                    >
+                      {service}
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+
+              {/* Input Fields */}
               <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 4 }}>
                 <TextField 
                   fullWidth 
-                  label="First Name" 
-                  variant="outlined" 
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
+                  placeholder="Your Name" 
+                  variant="standard" 
+                  InputProps={{ sx: { fontSize: '1.5rem', py: 1, '&:before': { borderBottom: '1px solid #d2d2d7' } } }}
                 />
                 <TextField 
                   fullWidth 
-                  label="Last Name" 
-                  variant="outlined" 
-                  sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
+                  placeholder="Your Email" 
+                  variant="standard" 
+                  type="email"
+                  InputProps={{ sx: { fontSize: '1.5rem', py: 1, '&:before': { borderBottom: '1px solid #d2d2d7' } } }}
                 />
               </Box>
+
               <TextField 
                 fullWidth 
-                label="Email Address" 
-                variant="outlined" 
-                type="email"
-                sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
-              />
-              <TextField 
-                fullWidth 
-                label="Message" 
-                variant="outlined" 
+                placeholder="Tell us about your project..." 
+                variant="standard" 
                 multiline
-                rows={6}
-                sx={{ '& .MuiOutlinedInput-root': { '& fieldset': { borderColor: 'rgba(0,0,0,0.2)' } } }}
+                rows={3}
+                InputProps={{ sx: { fontSize: '1.5rem', py: 1, '&:before': { borderBottom: '1px solid #d2d2d7' } } }}
               />
-              <Box sx={{ textAlign: 'center', mt: 2 }}>
-                <Button variant="contained" size="large" endIcon={<SendIcon />} sx={{ px: 6 }}>
-                  Send Message
+
+              {/* Budget Selector */}
+              <Box>
+                <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>Project Budget</Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                  {budgets.map((budget) => (
+                    <Box 
+                      key={budget}
+                      className="hover-target"
+                      onClick={() => setSelectedBudget(budget)}
+                      sx={{ 
+                        border: selectedBudget === budget ? '2px solid #00E5FF' : '1px solid #d2d2d7',
+                        borderRadius: '100px',
+                        px: 3, py: 1.5,
+                        cursor: 'pointer',
+                        color: selectedBudget === budget ? '#00E5FF' : '#1D1D1F',
+                        fontWeight: 600,
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          borderColor: '#00E5FF'
+                        }
+                      }}
+                    >
+                      {budget}
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+
+              <Box sx={{ mt: 4 }}>
+                <Button className="hover-target" variant="contained" size="large" endIcon={<SendIcon />} sx={{ px: 6, py: 2, fontSize: '1.2rem' }}>
+                  Submit Request
                 </Button>
               </Box>
             </Box>
           </form>
-        </Paper>
+        </Box>
       </motion.div>
     </Container>
   );

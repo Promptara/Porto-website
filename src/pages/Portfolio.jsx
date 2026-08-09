@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Typography, Container, Box, Grid, Card, CardContent, Tabs, Tab } from '@mui/material';
+﻿import React, { useState } from 'react';
+import { Typography, Container, Box, Tabs, Tab } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
+import ProjectCard from '../components/ProjectCard';
 
 const portfolioItems = [
   { id: 1, title: 'Corporate Portal', category: 'Website Development' },
@@ -38,7 +39,7 @@ const Portfolio = () => {
         </Typography>
         
         {/* Category Tabs */}
-        <Box sx={{ mb: 6, borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ mb: 10, borderBottom: '1px solid #e5e5ea' }}>
           <Tabs 
             value={activeTab} 
             onChange={handleTabChange} 
@@ -48,10 +49,16 @@ const Portfolio = () => {
             textColor="primary"
             indicatorColor="primary"
             sx={{
+              '& .MuiTabs-indicator': { height: 3 },
               '& .MuiTab-root': {
-                textTransform: 'none',
-                fontWeight: 600,
-                fontSize: '1rem',
+                textTransform: 'lowercase',
+                fontWeight: 700,
+                fontSize: '1.2rem',
+                color: '#1D1D1F',
+                minWidth: 'auto',
+                mr: 4,
+                px: 0,
+                '&.Mui-selected': { color: '#00E5FF' }
               }
             }}
           >
@@ -62,40 +69,11 @@ const Portfolio = () => {
         </Box>
 
         {/* Portfolio Grid */}
-        <Box sx={{ minHeight: 400 }}>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 4 }}>
+        <Box sx={{ minHeight: 600 }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: { xs: 4, md: 0 } }}>
             <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => (
-                <Box 
-                  key={item.id} 
-                  component={motion.div}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                  sx={{ 
-                    width: { 
-                      xs: '100%', 
-                      sm: 'calc(50% - 16px)', 
-                      md: 'calc(33.333% - 22px)' 
-                    } 
-                  }}
-                >
-                  <motion.div whileHover={{ y: -10 }} transition={{ type: 'spring', stiffness: 300 }} style={{ height: '100%' }}>
-                    <Card sx={{ height: '100%', borderRadius: 4, overflow: 'hidden', background: 'rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column' }}>
-                      <Box sx={{ height: 200, background: `linear-gradient(45deg, #f0f0f0, #e0e0e0)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                         <Typography color="text.secondary">Project {item.id} Image</Typography>
-                      </Box>
-                      <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography variant="h6" gutterBottom>{item.title}</Typography>
-                        <Typography variant="body2" color="primary.main" sx={{ fontWeight: 600 }}>
-                          {item.category}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Box>
+              {filteredItems.map((item, index) => (
+                <ProjectCard key={item.id} item={item} index={index} />
               ))}
             </AnimatePresence>
           </Box>
