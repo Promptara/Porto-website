@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { 
   Typography, 
   Grid, 
@@ -16,15 +16,16 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import CodeIcon from '@mui/icons-material/Code';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
 
 const blogPosts = [
-  { title: 'Form-Over-Function Mistakes, or How Not to Harm Your Business', author: 'Valeriia Bondarieva', role: 'Lead Designer' },
-  { title: 'No-Code in 2026: Framer vs Webflow Through a Designer\'s Eyes', author: 'Artem Meshkov', role: 'UI/UX Designer' },
-  { title: 'The Glass Is Half Empty: How Appleâ€™s Boldest Redesign Missed the Point', author: 'Ernest Asanov', role: 'Lead Designer' },
-  { title: 'From Block to Brand: Three Linocut Lessons for Digital Products', author: 'Yaroslava Yatsuba', role: 'Illustrator' },
+  { title: 'Form-Over-Function Mistakes, or How Not to Harm Your Business', author: 'Valeriia Bondarieva', role: 'Lead Designer', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop' },
+  { title: 'No-Code in 2026: Framer vs Webflow Through a Designer\'s Eyes', author: 'Artem Meshkov', role: 'UI/UX Designer', image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop' },
+  { title: 'The Glass Is Half Empty: How Apple\'s Boldest Redesign Missed the Point', author: 'Ernest Asanov', role: 'Lead Designer', image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=800&auto=format&fit=crop' },
+  { title: 'From Block to Brand: Three Linocut Lessons for Digital Products', author: 'Yaroslava Yatsuba', role: 'Illustrator', image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop' },
 ];
 
 const featuredWork = [
@@ -52,6 +53,16 @@ const itemVariants = {
 };
 
 const Home = () => {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { current } = scrollRef;
+      const scrollAmount = direction === 'left' ? -current.offsetWidth / 2 : current.offsetWidth / 2;
+      current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
     <Box>
       {/* Hero Section */}
@@ -140,15 +151,25 @@ const Home = () => {
               <Typography variant="h3" sx={{ color: '#1D1D1F', fontWeight: 800 }}>
                 Read our highly-opinionated notes
               </Typography>
+              <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
+                 <Box onClick={() => scroll('left')} className="hover-target" sx={{ width: 50, height: 50, borderRadius: '50%', border: '1px solid #d2d2d7', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', '&:hover': { background: '#1D1D1F', color: '#fff', borderColor: '#1D1D1F' } }}>
+                    <ArrowBackIcon />
+                 </Box>
+                 <Box onClick={() => scroll('right')} className="hover-target" sx={{ width: 50, height: 50, borderRadius: '50%', border: '1px solid #d2d2d7', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s', '&:hover': { background: '#1D1D1F', color: '#fff', borderColor: '#1D1D1F' } }}>
+                    <ArrowForwardIcon />
+                 </Box>
+              </Box>
             </Box>
             
             {/* Horizontal Scroll Container */}
             <Box 
+              ref={scrollRef}
               sx={{ 
                 display: 'flex', 
                 gap: 4, 
                 overflowX: 'auto', 
                 pb: 4,
+                scrollSnapType: 'x mandatory',
                 '&::-webkit-scrollbar': { display: 'none' },
                 msOverflowStyle: 'none',
                 scrollbarWidth: 'none',
@@ -156,35 +177,78 @@ const Home = () => {
             >
               {blogPosts.map((post, index) => (
                 <Box 
-                  key={index} 
-                  className="hover-target"
+                  key={index}
+                  component={Link}
+                  to="/blog"
+                  className="hover-target group"
                   sx={{ 
-                    minWidth: { xs: '85vw', md: '400px' },
-                    height: '450px',
-                    background: '#f5f5f7',
-                    borderRadius: '30px',
-                    p: 4,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
+                    minWidth: { xs: '85vw', md: '500px' },
+                    height: '600px',
+                    borderRadius: '40px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    scrollSnapAlign: 'start',
                     cursor: 'pointer',
-                    transition: 'background 0.3s',
-                    '&:hover': {
-                      background: '#e5e5ea'
+                    textDecoration: 'none',
+                    '&:hover .bg-image': {
+                      transform: 'scale(1.05)'
+                    },
+                    '&:hover .overlay': {
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)'
                     }
                   }}
                 >
-                  <Box>
-                    <Typography variant="h4" sx={{ color: '#1D1D1F', fontWeight: 800, lineHeight: 1.2 }}>
-                      {post.title}
-                    </Typography>
-                  </Box>
+                  {/* Background Image */}
+                  <Box 
+                    className="bg-image"
+                    sx={{
+                      position: 'absolute',
+                      top: 0, left: 0, right: 0, bottom: 0,
+                      backgroundImage: `url(${post.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      transition: 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+                      zIndex: 1
+                    }}
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <Box 
+                    className="overlay"
+                    sx={{
+                      position: 'absolute',
+                      top: 0, left: 0, right: 0, bottom: 0,
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 100%)',
+                      transition: 'background 0.4s ease',
+                      zIndex: 2
+                    }}
+                  />
 
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box sx={{ width: 48, height: 48, borderRadius: '50%', background: '#d2d2d7' }} />
+                  {/* Content Overlay */}
+                  <Box sx={{ position: 'relative', zIndex: 3, height: '100%', p: 5, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                       <Box sx={{ 
+                          width: 50, height: 50, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff',
+                          transition: 'background 0.3s',
+                          '&:hover': { background: '#00E5FF', color: '#1D1D1F' }
+                       }}>
+                         <ArrowForwardIcon />
+                       </Box>
+                    </Box>
+
                     <Box>
-                      <Typography sx={{ fontWeight: 800, color: '#1D1D1F', fontSize: '1rem' }}>{post.author}</Typography>
-                      <Typography sx={{ color: '#a1a1a6', fontWeight: 600, fontSize: '0.9rem' }}>{post.role}</Typography>
+                      <Typography variant="h4" sx={{ color: '#ffffff', fontWeight: 800, lineHeight: 1.2, mb: 4, fontSize: '2rem' }}>
+                        {post.title}
+                      </Typography>
+                      
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                        <Box sx={{ width: 48, height: 48, borderRadius: '50%', background: '#ffffff' }} />
+                        <Box>
+                          <Typography sx={{ fontWeight: 800, color: '#ffffff', fontSize: '1rem' }}>{post.author}</Typography>
+                          <Typography sx={{ color: '#d2d2d7', fontWeight: 600, fontSize: '0.9rem' }}>{post.role}</Typography>
+                        </Box>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
