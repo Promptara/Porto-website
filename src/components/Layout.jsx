@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { 
   AppBar, 
   Toolbar, 
@@ -82,7 +82,7 @@ const Layout = ({ children }) => {
             <Box sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: '#1D1D1F' }} component={Link} to="/">
               <img src="/promptaralogo.png" alt="Promptara Logo" style={{ height: '32px', marginRight: '16px' }} />
               <Typography variant="h5" component="div" sx={{ fontWeight: 800, letterSpacing: '-0.02em', textTransform: 'lowercase' }}>
-                promptara
+                promptara agency 
               </Typography>
             </Box>
 

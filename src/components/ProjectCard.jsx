@@ -1,6 +1,7 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
+import { CardContainer, CardBody, CardItem } from './ui/3d-card';
 
 const ProjectCard = ({ item, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -26,47 +27,56 @@ const ProjectCard = ({ item, index }) => {
       }}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Box 
-          sx={{ 
-            width: '100%',
-            height: { xs: 400, md: 700 }, // Massive height
-            backgroundColor: '#e5e5ea', 
-            borderRadius: '40px',
-            mb: 4,
-            overflow: 'hidden',
-            position: 'relative',
-            transform: 'translateZ(0)' // Hardware acceleration
-          }}
-        >
-          {/* Default Image State */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: isHovered ? 0 : 1 }}
-            transition={{ duration: 0.3 }}
-            style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#d2d2d7' }}
-          >
-             <Typography sx={{ fontWeight: 900, color: '#ffffff', fontSize: '2rem' }}>POSTER {item.id}</Typography>
-          </motion.div>
-
-          {/* Video Hover State */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1.05 : 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
-          >
-            {/* Using a placeholder open source video */}
-            <video 
-              autoPlay 
-              muted 
-              loop 
-              playsInline 
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        <CardContainer className="inter-var m-0 p-0" containerClassName="py-0 flex m-0">
+          <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[30rem] h-auto rounded-xl p-0">
+            <CardItem
+              translateZ="100"
+              className="w-full h-full"
             >
-              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-            </video>
-          </motion.div>
-        </Box>
+              <Box 
+                sx={{ 
+                  width: '100%',
+                  height: { xs: 400, md: 700 }, // Massive height
+                  backgroundColor: '#e5e5ea', 
+                  borderRadius: '40px',
+                  mb: 4,
+                  overflow: 'hidden',
+                  position: 'relative',
+                  transform: 'translateZ(0)' // Hardware acceleration
+                }}
+              >
+                {/* Default Image State */}
+                <motion.div
+                  initial={false}
+                  animate={{ opacity: isHovered ? 0 : 1 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#d2d2d7' }}
+                >
+                   <Typography sx={{ fontWeight: 900, color: '#ffffff', fontSize: '2rem' }}>POSTER {item.id}</Typography>
+                </motion.div>
+      
+                {/* Video Hover State */}
+                <motion.div
+                  initial={false}
+                  animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1.05 : 1 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
+                >
+                  {/* Using a placeholder open source video */}
+                  <video 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  >
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                  </video>
+                </motion.div>
+              </Box>
+            </CardItem>
+          </CardBody>
+        </CardContainer>
         
         {/* Title & Category */}
         <Box>

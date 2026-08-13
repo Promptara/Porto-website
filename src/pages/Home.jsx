@@ -20,6 +20,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
+import { AuroraBackground } from '../components/ui/aurora-background';
+import { TextGenerateEffect } from '../components/ui/text-generate-effect';
 
 const blogPosts = [
   { title: 'Form-Over-Function Mistakes, or How Not to Harm Your Business', author: 'Valeriia Bondarieva', role: 'Lead Designer', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop' },
@@ -66,19 +68,20 @@ const Home = () => {
   return (
     <Box>
       {/* Hero Section */}
-      <Container maxWidth="xl" sx={{ pt: '15vw', pb: 10, px: { xs: 3, md: 8 } }}>
-        <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+      <AuroraBackground className="pt-20 pb-10 px-6 md:px-16 w-full max-w-[1536px] mx-auto bg-transparent dark:bg-transparent">
+        <motion.div initial="hidden" animate="visible" variants={containerVariants} className="w-full">
           <Grid container spacing={4} alignItems="flex-end">
             <Grid item xs={12} md={8}>
               <motion.div variants={itemVariants}>
                 <Typography sx={{ color: '#a1a1a6', fontWeight: 700, textTransform: 'uppercase', mb: 2, fontSize: '0.9rem', letterSpacing: '0.05em' }}>
-                  We are a design studio
+                  We are a agency studio
                 </Typography>
               </motion.div>
-              <motion.div variants={itemVariants}>
-                <Typography variant="h1" sx={{ color: '#1D1D1F', mb: 0 }}>Crafting</Typography>
-                <Typography variant="h1" sx={{ color: '#1D1D1F', mb: 0 }}>UX design</Typography>
-                <Typography variant="h1" sx={{ color: '#1D1D1F', mb: 4 }}>and brands</Typography>
+              <motion.div variants={itemVariants} className="mb-4">
+                <TextGenerateEffect 
+                  words="Crafting UI/UX design website Development and brands" 
+                  className="text-[clamp(3rem,6.5vw,10rem)] leading-[0.9] tracking-[-0.03em] font-black text-[#1D1D1F]"
+                />
               </motion.div>
               <motion.div variants={itemVariants} style={{ marginTop: '60px' }}>
                 <Typography sx={{ color: '#1D1D1F', fontWeight: 800, textTransform: 'uppercase', mb: 2, fontSize: '0.8rem', letterSpacing: '0.05em' }}>
@@ -137,11 +140,12 @@ const Home = () => {
                      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
                    </video>
                  </Box>
-               </motion.div>
+                  </Box>
+                </motion.div>
             </Grid>
           </Grid>
         </motion.div>
-      </Container>
+      </AuroraBackground>
 
       {/* Blog Slider Section */}
       <Box sx={{ py: 15, background: '#ffffff', overflow: 'hidden' }}>
