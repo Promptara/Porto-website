@@ -9,39 +9,70 @@ export const AuroraBackground = ({
   ...props
 }) => {
   return (
-    <main>
-      <div
-        className={cn(
-          "relative flex flex-col h-[100vh] items-center justify-center bg-zinc-50 dark:bg-zinc-900 text-slate-950 transition-bg",
-          className
-        )}
-        {...props}
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className={cn(
-              `
-            [--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
-            [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)]
-            [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)]
-            [background-image:var(--white-gradient),var(--aurora)]
-            dark:[background-image:var(--dark-gradient),var(--aurora)]
-            [background-size:300%,_200%]
-            [background-position:50%_50%,50%_50%]
-            filter blur-[10px] invert dark:invert-0
-            after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)] 
-            after:dark:[background-image:var(--dark-gradient),var(--aurora)]
-            after:[background-size:200%,_100%] 
-            after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
-            pointer-events-none
-            absolute -inset-[10px] opacity-50 will-change-transform`,
-              showRadialGradient &&
-                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
-            )}
-          ></div>
-        </div>
+    <div
+      className={cn(
+        "relative flex flex-col w-full min-h-[90vh] md:min-h-screen items-center justify-center bg-[#fafafa] text-slate-950 transition-bg overflow-hidden",
+        className
+      )}
+      {...props}
+    >
+      {/* Premium Next-Gen Liquid Glow Background (100% Smooth GPU 120fps) */}
+      <div className="absolute inset-0 overflow-hidden w-full h-full pointer-events-none z-0">
+        {/* Animated Gradient Blob 1: Electric Cyan */}
+        <div 
+          className="absolute -top-[20%] -left-[10%] w-[80vw] h-[80vw] max-w-[900px] max-h-[900px] rounded-full opacity-45 pointer-events-none animate-liquid-blob-1"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(0, 229, 255, 0.4) 0%, rgba(0, 229, 255, 0) 70%)',
+            filter: 'blur(60px)',
+            willChange: 'transform',
+            transform: 'translateZ(0)'
+          }}
+        />
+
+        {/* Animated Gradient Blob 2: Royal Indigo / Violet */}
+        <div 
+          className="absolute top-[5%] -right-[15%] w-[85vw] h-[85vw] max-w-[950px] max-h-[950px] rounded-full opacity-40 pointer-events-none animate-liquid-blob-2"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(124, 77, 255, 0.35) 0%, rgba(124, 77, 255, 0) 70%)',
+            filter: 'blur(70px)',
+            willChange: 'transform',
+            transform: 'translateZ(0)'
+          }}
+        />
+
+        {/* Animated Gradient Blob 3: Vibrant Blue Wave */}
+        <div 
+          className="absolute top-[35%] left-[20%] w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] rounded-full opacity-35 pointer-events-none animate-liquid-blob-3"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.35) 0%, rgba(59, 130, 246, 0) 70%)',
+            filter: 'blur(65px)',
+            willChange: 'transform',
+            transform: 'translateZ(0)'
+          }}
+        />
+
+        {/* Subtle Fine Micro Grid Overlay for Studio Structure */}
+        <div 
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, #1D1D1F 1px, transparent 1px),
+              linear-gradient(to bottom, #1D1D1F 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px'
+          }}
+        />
+      </div>
+
+      {/* Smooth Bottom Feather Transition Layer */}
+      <div 
+        className="absolute inset-x-0 bottom-0 h-44 sm:h-56 md:h-72 bg-gradient-to-t from-[#fafafa] via-[#fafafa]/80 to-transparent pointer-events-none z-10" 
+        aria-hidden="true"
+      />
+
+      <div className="relative z-20 w-full">
         {children}
       </div>
-    </main>
+    </div>
   );
 };

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Container, Box, Grid } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -65,11 +65,12 @@ const Services = () => {
                 <Box 
                   key={index} 
                   onMouseEnter={() => setActiveService(index)}
+                  onClick={() => setActiveService(index)}
                   sx={{ 
                     borderBottom: '1px solid #e5e5ea',
-                    py: 8,
-                    cursor: 'none', // Custom cursor handles the interaction
-                    opacity: activeService === index ? 1 : 0.4,
+                    py: 6,
+                    cursor: 'pointer',
+                    opacity: activeService === index ? 1 : 0.5,
                     transition: 'opacity 0.4s ease'
                   }}
                   className="hover-target"

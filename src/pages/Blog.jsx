@@ -1,11 +1,11 @@
-﻿import React from 'react';
-import { Typography, Container, Box, Grid } from '@mui/material';
+import React from 'react';
+import { Typography, Container, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const blogPosts = [
   { id: 1, title: 'Form-Over-Function Mistakes, or How Not to Harm Your Business', author: 'Valeriia Bondarieva', role: 'Lead Designer', color: '#f5f5f7' },
-  { id: 2, title: 'No-Code in 2026: Framer vs Webflow Through a Designer\'s Eyes', author: 'Artem Meshkov', role: 'UI/UX Designer', color: '#e5e5ea' },
-  { id: 3, title: 'The Glass Is Half Empty: How Appleâ€™s Boldest Redesign Missed the Point', author: 'Ernest Asanov', role: 'Lead Designer', color: '#d2d2d7' },
+  { id: 2, title: "No-Code in 2026: Framer vs Webflow Through a Designer's Eyes", author: 'Artem Meshkov', role: 'UI/UX Designer', color: '#e5e5ea' },
+  { id: 3, title: "The Glass Is Half Empty: How Apple's Boldest Redesign Missed the Point", author: 'Ernest Asanov', role: 'Lead Designer', color: '#d2d2d7' },
   { id: 4, title: 'From Block to Brand: Three Linocut Lessons for Digital Products', author: 'Yaroslava Yatsuba', role: 'Illustrator', color: '#f5f5f7' },
   { id: 5, title: 'Why Micro-Interactions Are the New Macro-Conversions', author: 'Anna K.', role: 'Product Manager', color: '#e5e5ea' },
   { id: 6, title: 'The Death of the Hamburger Menu (And What Comes Next)', author: 'Valeriia Bondarieva', role: 'Lead Designer', color: '#d2d2d7' },
@@ -68,7 +68,6 @@ const Blog = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  cursor: 'none',
                   transition: 'background 0.3s, transform 0.4s ease',
                   '&:hover': {
                     background: '#e5e5ea',

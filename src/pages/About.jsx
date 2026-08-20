@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Typography, Container, Box, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -83,7 +83,6 @@ const About = () => {
                      display: 'flex',
                      alignItems: 'center',
                      justifyContent: 'center',
-                     cursor: 'none',
                      transition: 'transform 0.4s ease',
                      '&:hover': {
                        transform: 'scale(0.98)'

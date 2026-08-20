@@ -1,5 +1,5 @@
-﻿import React from 'react';
-import { Typography, Container, Box, Grid } from '@mui/material';
+import React from 'react';
+import { Typography, Container, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const labExperiments = [
@@ -66,7 +66,6 @@ const Lab = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  cursor: 'none',
                   transition: 'transform 0.4s ease',
                   position: 'relative',
                   overflow: 'hidden',

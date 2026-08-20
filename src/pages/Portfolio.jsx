@@ -1,18 +1,90 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Container, Box, Tabs, Tab } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 
 const portfolioItems = [
-  { id: 1, title: 'Corporate Portal', category: 'Website Development' },
-  { id: 2, title: 'Modern E-commerce', category: 'Website Development' },
-  { id: 3, title: 'Premium Blog Theme', category: 'WordPress Development' },
-  { id: 4, title: 'Company Profile WP', category: 'WordPress Development' },
-  { id: 5, title: 'Brand Identity Redesign', category: 'Graphic Design' },
-  { id: 6, title: 'Mobile App Wireframes', category: 'UI/UX Design' },
-  { id: 7, title: 'Fintech App Design', category: 'UI/UX Design' },
-  { id: 8, title: 'SaaS UI Kit', category: 'Digital Products' },
-  { id: 9, title: 'Admin Dashboard Template', category: 'Digital Products' },
+  { 
+    id: 1, 
+    title: 'Fintech Corporate Portal', 
+    category: 'Website Development',
+    client: 'FinPulse International',
+    year: '2026',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+    tags: ['React', 'Design System', 'Financial']
+  },
+  { 
+    id: 2, 
+    title: 'Luxe E-Commerce Storefront', 
+    category: 'Website Development',
+    client: 'Veloce Atelier',
+    year: '2026',
+    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop',
+    tags: ['Shopify', 'Framer', 'Luxury Brand']
+  },
+  { 
+    id: 3, 
+    title: 'Monocle Magazine WP', 
+    category: 'WordPress Development',
+    client: 'Monocle Press',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop',
+    tags: ['WordPress', 'CMS', 'Editorial']
+  },
+  { 
+    id: 4, 
+    title: 'Kubo Architects Profile', 
+    category: 'WordPress Development',
+    client: 'Kubo Studio',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop',
+    tags: ['WordPress', 'Custom Theme']
+  },
+  { 
+    id: 5, 
+    title: 'Aura Studio Brand Identity', 
+    category: 'Graphic Design',
+    client: 'Aura Architecture',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop',
+    tags: ['Branding', 'Typography', '3D Asset']
+  },
+  { 
+    id: 6, 
+    title: 'Neura AI Mobile Suite', 
+    category: 'UI/UX Design',
+    client: 'NeuraData Inc',
+    year: '2026',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop',
+    tags: ['iOS App', 'Figma', 'Prototyping']
+  },
+  { 
+    id: 7, 
+    title: 'Crypto Mobile Wallet UI', 
+    category: 'UI/UX Design',
+    client: 'Aether Capital',
+    year: '2026',
+    image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1200&auto=format&fit=crop',
+    tags: ['Fintech', 'Mobile UI']
+  },
+  { 
+    id: 8, 
+    title: 'SaaS Design System Kit', 
+    category: 'Digital Products',
+    client: 'Promptara Lab',
+    year: '2026',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+    tags: ['Design System', 'UI Kit']
+  },
+  { 
+    id: 9, 
+    title: 'Executive Operations Dashboard', 
+    category: 'Digital Products',
+    client: 'Starlight Ops',
+    year: '2025',
+    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop',
+    tags: ['React', 'Dashboard', 'Analytics']
+  },
 ];
 
 const categories = ['All', 'Website Development', 'WordPress Development', 'UI/UX Design', 'Graphic Design', 'Digital Products'];

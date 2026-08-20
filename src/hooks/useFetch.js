@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import api from '../api/api';
 
 /**
@@ -12,6 +12,8 @@ const useFetch = (endpoint, options = {}) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const optionsString = JSON.stringify(options);
+
   const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -23,7 +25,7 @@ const useFetch = (endpoint, options = {}) => {
     } finally {
       setLoading(false);
     }
-  }, [endpoint, JSON.stringify(options)]); // Using JSON.stringify to avoid infinite loops if options object is unstable
+  }, [endpoint, optionsString]);
 
   useEffect(() => {
     fetchData();
